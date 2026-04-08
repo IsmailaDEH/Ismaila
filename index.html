@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planificateur de Révisions</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Planificateur de Révisions</h1>
+    <p class="subtitle">Génère ton emploi du temps de révisions personnalisé</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Mes paramètres</h2>
+      <div class="form-grid">
+        <label>
+          Date de début
+          <input type="date" id="start-date" />
+        </label>
+        <label>
+          Date de fin (examen)
+          <input type="date" id="end-date" />
+        </label>
+        <label>
+          Heures de révision par jour
+          <input type="number" id="hours-per-day" min="0.5" max="12" step="0.5" value="2" />
+        </label>
+        <label>
+          Jours de repos
+          <div class="rest-days">
+            <label><input type="checkbox" value="0" /> Dim</label>
+            <label><input type="checkbox" value="1" /> Lun</label>
+            <label><input type="checkbox" value="2" /> Mar</label>
+            <label><input type="checkbox" value="3" /> Mer</label>
+            <label><input type="checkbox" value="4" /> Jeu</label>
+            <label><input type="checkbox" value="5" /> Ven</label>
+            <label><input type="checkbox" value="6" /> Sam</label>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Mes matières</h2>
+      <form id="subject-form" class="subject-form">
+        <input type="text" id="subject-name" placeholder="Nom de la matière (ex: Maths)" required />
+        <select id="subject-difficulty" title="Difficulté / priorité">
+          <option value="1">Facile</option>
+          <option value="2" selected>Moyenne</option>
+          <option value="3">Difficile</option>
+          <option value="4">Très difficile</option>
+        </select>
+        <input type="number" id="subject-chapters" placeholder="Nb chapitres" min="1" value="5" />
+        <button type="submit">Ajouter</button>
+      </form>
+      <ul id="subject-list" class="subject-list"></ul>
+    </section>
+
+    <section class="card">
+      <button id="generate-btn" class="primary-btn">Générer mon emploi du temps</button>
+      <button id="reset-btn" class="secondary-btn">Réinitialiser</button>
+    </section>
+
+    <section class="card" id="schedule-section" hidden>
+      <h2>Mon emploi du temps</h2>
+      <div class="schedule-summary" id="schedule-summary"></div>
+      <div id="schedule-output" class="schedule-output"></div>
+      <button id="print-btn" class="secondary-btn">Imprimer / Exporter en PDF</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tes données sont sauvegardées localement dans ton navigateur.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
