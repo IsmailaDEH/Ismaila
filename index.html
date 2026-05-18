@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DayFlow — Daily Schedule Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======================== SIDEBAR ======================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="9" fill="url(#logoGrad)"/>
+          <path d="M9 16h14M16 9v14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#6366f1"/>
+              <stop offset="1" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">DayFlow</span>
+      </div>
+      <button class="sidebar-close-btn" id="sidebarClose" aria-label="Close sidebar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mini Calendar -->
+    <div class="mini-calendar">
+      <div class="mini-cal-nav-row">
+        <button class="mini-cal-nav-btn" id="miniCalPrev" aria-label="Previous month">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="mini-cal-month" id="miniCalTitle"></span>
+        <button class="mini-cal-nav-btn" id="miniCalNext" aria-label="Next month">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mini-cal-weekdays">
+        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+      </div>
+      <div class="mini-cal-days" id="miniCalDays"></div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="sidebar-section">
+      <h3 class="sidebar-section-title">Categories</h3>
+      <div class="category-filter-list" id="categoryFilters">
+        <button class="cat-filter-btn active" data-cat="all">
+          <span class="cat-dot" style="background:var(--accent)"></span> All
+          <span class="cat-count" id="catCount-all">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="work">
+          <span class="cat-dot cat-work"></span> Work
+          <span class="cat-count" id="catCount-work">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="personal">
+          <span class="cat-dot cat-personal"></span> Personal
+          <span class="cat-count" id="catCount-personal">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="health">
+          <span class="cat-dot cat-health"></span> Health
+          <span class="cat-count" id="catCount-health">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="study">
+          <span class="cat-dot cat-study"></span> Study
+          <span class="cat-count" id="catCount-study">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="social">
+          <span class="cat-dot cat-social"></span> Social
+          <span class="cat-count" id="catCount-social">0</span>
+        </button>
+        <button class="cat-filter-btn" data-cat="other">
+          <span class="cat-dot cat-other"></span> Other
+          <span class="cat-count" id="catCount-other">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Week Stats -->
+    <div class="sidebar-section">
+      <h3 class="sidebar-section-title">This Week</h3>
+      <div class="week-stat-row">
+        <div class="week-stat-item">
+          <span class="week-stat-num" id="weekTotal">0</span>
+          <span class="week-stat-label">Tasks</span>
+        </div>
+        <div class="week-stat-divider"></div>
+        <div class="week-stat-item">
+          <span class="week-stat-num" id="weekDone">0</span>
+          <span class="week-stat-label">Done</span>
+        </div>
+        <div class="week-stat-divider"></div>
+        <div class="week-stat-item">
+          <span class="week-stat-num" id="weekPct">0%</span>
+          <span class="week-stat-label">Rate</span>
+        </div>
+      </div>
+      <div class="week-bar-row" id="weekBarRow">
+        <!-- 7 day bars -->
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="sidebar-section sidebar-bottom">
+      <button class="export-btn" id="exportBtn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Export as JSON
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sidebar backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ======================== MAIN ======================== -->
+  <main class="main" id="mainContent">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn" id="menuBtn" aria-label="Toggle sidebar">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="date-nav-group">
+          <button class="icon-btn" id="prevDay" aria-label="Previous day">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="today-btn" id="todayBtn">Today</button>
+          <button class="icon-btn" id="nextDay" aria-label="Next day">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="date-label-wrap">
+            <input type="date" class="date-picker-input" id="datePicker" aria-label="Select date"/>
+            <h1 class="current-date-heading" id="dateHeading"></h1>
+          </div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box">
+          <svg class="search-box-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <input type="text" class="search-box-input" id="searchInput" placeholder="Search tasks…" aria-label="Search tasks"/>
+          <button class="search-clear-btn hidden" id="searchClearBtn" aria-label="Clear search">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M9 3L3 9M3 3l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="view-toggle-group" role="group" aria-label="View mode">
+          <button class="view-toggle-btn active" id="dayViewBtn" data-view="day">Day</button>
+          <button class="view-toggle-btn" id="weekViewBtn" data-view="week">Week</button>
+        </div>
+        <button class="icon-btn notif-btn" id="notifBtn" title="Enable notifications" aria-label="Toggle notifications">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M9 2a5 5 0 00-5 5v3L2.5 12.5h13L14 10V7a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 14a2 2 0 004 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-tile">
+        <span class="stat-tile-num" id="statTotal">0</span>
+        <span class="stat-tile-label">Total Tasks</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-tile-num accent-green" id="statDone">0</span>
+        <span class="stat-tile-label">Completed</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-tile-num accent-amber" id="statPending">0</span>
+        <span class="stat-tile-label">Pending</span>
+      </div>
+      <div class="stat-tile stat-ring-tile">
+        <div class="ring-wrap">
+          <svg class="progress-ring" width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+            <circle cx="26" cy="26" r="21" class="ring-track"/>
+            <circle cx="26" cy="26" r="21" class="ring-progress" id="progressRing"/>
+          </svg>
+          <span class="ring-label" id="statPct">0%</span>
+        </div>
+        <span class="stat-tile-label">Progress</span>
+      </div>
+    </div>
+
+    <!-- View Container -->
+    <div class="view-wrap" id="viewWrap">
+
+      <!-- DAY VIEW -->
+      <div class="day-view" id="dayView">
+        <div class="timeline-scroll" id="timelineScroll">
+          <div class="timeline" id="timeline">
+            <!-- Hour rows injected by JS -->
+          </div>
+          <div class="time-now-bar hidden" id="timeNowBar">
+            <div class="time-now-dot"></div>
+            <div class="time-now-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK VIEW -->
+      <div class="week-view hidden" id="weekView">
+        <div class="week-grid" id="weekGrid">
+          <!-- Week columns injected by JS -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FAB -->
+  <button class="fab" id="fab" aria-label="Add new task">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+      <path d="M11 4v14M4 11h14" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- ======================== TASK FORM MODAL ======================== -->
+  <div class="overlay hidden" id="formOverlay" role="dialog" aria-modal="true" aria-labelledby="formModalTitle">
+    <div class="modal" id="formModal">
+      <div class="modal-hd">
+        <h2 class="modal-hd-title" id="formModalTitle">Add Task</h2>
+        <button class="modal-close-btn" id="formModalClose" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="taskForm" novalidate>
+          <input type="hidden" id="editingId"/>
+
+          <div class="fg fg-full">
+            <label class="fl" for="fTitle">Title <span class="req-star">*</span></label>
+            <input class="fi" type="text" id="fTitle" placeholder="e.g. Team standup" required autocomplete="off"/>
+            <span class="ferr hidden" id="fTitleErr">Title is required</span>
+          </div>
+
+          <div class="form-row-3">
+            <div class="fg">
+              <label class="fl" for="fDate">Date</label>
+              <input class="fi" type="date" id="fDate" required/>
+            </div>
+            <div class="fg">
+              <label class="fl" for="fStart">Start</label>
+              <input class="fi" type="time" id="fStart" required/>
+            </div>
+            <div class="fg">
+              <label class="fl" for="fEnd">End</label>
+              <input class="fi" type="time" id="fEnd" required/>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="fg">
+              <label class="fl" for="fCategory">Category</label>
+              <select class="fi" id="fCategory">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="health">Health</option>
+                <option value="study">Study</option>
+                <option value="social">Social</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="fPriority">Priority</label>
+              <select class="fi" id="fPriority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="fg">
+              <label class="fl" for="fRecurring">Repeat</label>
+              <select class="fi" id="fRecurring">
+                <option value="none">No repeat</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+              </select>
+            </div>
+            <div class="fg fg-center">
+              <label class="fi-checkbox">
+                <input type="checkbox" id="fDone"/>
+                <span class="fi-checkbox-box"></span>
+                Mark as completed
+              </label>
+            </div>
+          </div>
+
+          <div class="fg fg-full">
+            <label class="fl" for="fNotes">Notes</label>
+            <textarea class="fi fi-ta" id="fNotes" rows="3" placeholder="Additional details…"></textarea>
+          </div>
+
+          <div class="modal-ft">
+            <button type="button" class="btn btn-danger hidden" id="deleteBtn">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                <path d="M2 4h11M5 4V2h5v2M4 4l.7 8.5a.5.5 0 00.5.5h5.6a.5.5 0 00.5-.5L12 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Delete
+            </button>
+            <div class="modal-ft-right">
+              <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="saveBtn">Save Task</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== DETAIL MODAL ======================== -->
+  <div class="overlay hidden" id="detailOverlay" role="dialog" aria-modal="true" aria-labelledby="detailHeading">
+    <div class="modal modal-sm" id="detailModal">
+      <div class="modal-hd">
+        <span class="detail-cat-chip" id="detailCatChip"></span>
+        <button class="modal-close-btn" id="detailClose" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 class="detail-heading" id="detailHeading"></h2>
+        <div class="detail-meta-row">
+          <span class="detail-meta-chip" id="detailTimeChip">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M6.5 3.5v3l2 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span id="detailTimeText"></span>
+          </span>
+          <span class="detail-meta-chip" id="detailPriChip"></span>
+          <span class="detail-meta-chip" id="detailRecurChip"></span>
+        </div>
+        <p class="detail-notes" id="detailNotes"></p>
+        <div class="detail-actions-row">
+          <button class="btn btn-toggle-done" id="detailDoneBtn"></button>
+          <button class="btn btn-ghost" id="detailEditBtn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M9.5 1.5a1.5 1.5 0 012.1 2.1L4 11 1 12l1-3 7.5-7.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Edit
+          </button>
+          <button class="btn btn-danger" id="detailDeleteBtn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 4h10M4.5 4V2.5h5V4M5 6.5V10M9 6.5V10M3 4l.7 7a.5.5 0 00.5.5h5.6a.5.5 0 00.5-.5L11 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-area" id="toastArea" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
