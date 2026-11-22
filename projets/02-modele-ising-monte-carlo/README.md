@@ -1,6 +1,6 @@
 # 🧲 Modèle d'Ising 2D : transition de phase par Monte-Carlo
 
-> Physique statistique numérique : retrouver la température critique d'un aimant à partir d'une simulation Monte-Carlo.
+> Prolongement des **travaux pratiques avancés de Master 1** (Université de Tours) : retrouver la température critique d'un aimant à partir d'une simulation Monte-Carlo.
 
 ![tests](https://img.shields.io/badge/tests-5%20passés-brightgreen) ![python](https://img.shields.io/badge/python-3.10+-blue) ![methode](https://img.shields.io/badge/Monte--Carlo-Metropolis-informational)
 
@@ -66,7 +66,7 @@ python -m pytest tests
 
 ## 👤 Auteur
 
-**Ismaila DEH**, étudiant en physique · [GitHub](https://github.com/IsmailaDEH)
+**Ismaila AMADOU DEH**, M2 Physique Fondamentale (Théories Quantiques), Université de Tours · [GitHub](https://github.com/IsmailaDEH) · [LinkedIn](https://www.linkedin.com/in/ismaila-amadou-deh)
 
 ## 🔗 Projets connexes
 

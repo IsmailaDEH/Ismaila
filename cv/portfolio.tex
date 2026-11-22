@@ -25,7 +25,7 @@
 \setlist{nosep,leftmargin=1.4em}
 \pagestyle{fancy}\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\small\color{gris}Ismaila DEH · Portfolio de physique numérique}
+\fancyfoot[L]{\small\color{gris}Ismaila AMADOU DEH · Portfolio de simulation numérique}
 \fancyfoot[R]{\small\color{gris}\thepage}
 
 \newcommand{\chiffre}[2]{\begin{minipage}[t]{0.23\linewidth}\centering{\Huge\color{accent}#1}\\[2pt]{\footnotesize\color{gris}\MakeUppercase{#2}}\end{minipage}}
@@ -36,23 +36,24 @@
 % ------------------------------------------------------------------ Page de garde
 \thispagestyle{empty}
 \vspace*{2cm}
-{\color{gris}\small\texttt{ISMAILA DEH · ÉTUDIANT EN PHYSIQUE}}\\[0.6cm]
-{\fontsize{38}{42}\selectfont\bfseries Physique numérique\\[4pt]\color{gris}\itshape \& modélisation}\\[1cm]
+{\color{gris}\small\texttt{ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · UNIVERSITÉ DE TOURS}}\\[0.6cm]
+{\fontsize{38}{42}\selectfont\bfseries Simulation\\[4pt]\color{gris}\itshape \& physique des matériaux}\\[1cm]
 \begin{minipage}{0.85\linewidth}\large
-Je construis des simulations de systèmes physiques (chaos, transitions de phase, diffusion, orbites) et je les confronte à la théorie. J'utilise aussi l'apprentissage automatique pour retrouver des lois physiques à partir de données.
+Étudiant en Master 2 Physique Fondamentale, parcours Théories Quantiques (Université de Tours, Institut Denis Poisson, CNRS UMR 7013). \textbf{Je recherche un stage de M2 en simulation numérique et physique des matériaux} : dynamique moléculaire, potentiels interatomiques, quantification d'incertitude. Ce portfolio rassemble huit projets de simulation, tous validés contre la théorie.
 \end{minipage}
 
-\vspace{1.5cm}
-\noindent\chiffre{5}{projets}\hfill\chiffre{0,9\,\%}{erreur sur $T_c$ (Ising)}\hfill\chiffre{0,13\,\%}{erreur Lorenz (SINDy)}\hfill\chiffre{19}{tests automatiques}
+\vspace{1cm}
+\noindent\chiffre{8}{projets}\hfill\chiffre{256}{atomes en dynamique moléculaire}\hfill\chiffre{0,9\,\%}{erreur sur $T_c$ (Ising)}\hfill\chiffre{34}{tests automatiques}
 
-\vspace{1.5cm}
+\vspace{1cm}
 \begin{center}
-\includegraphics[width=0.95\linewidth]{02-modele-ising-monte-carlo/figures/03_configurations.png}
+\includegraphics[width=0.6\linewidth]{06-dynamique-moleculaire-lennard-jones/figures/02_g_de_r.png}
 \end{center}
 
 \vfill
 \noindent\textbf{Code source :} \href{https://github.com/IsmailaDEH/Ismaila}{\color{accent}github.com/IsmailaDEH/Ismaila}\\
-\textbf{Outils :} Python · NumPy · SciPy · Matplotlib · pytest · GitHub Actions · \LaTeX
+\textbf{LinkedIn :} \href{https://www.linkedin.com/in/ismaila-amadou-deh}{\color{accent}linkedin.com/in/ismaila-amadou-deh}\\
+\textbf{Outils :} Python · NumPy · SciPy · Matplotlib · pytest · GitHub Actions · \LaTeX{} · Mathematica · ROOT
 
 \newpage
 % ------------------------------------------------------------------ Sommaire / méthode
@@ -66,6 +67,9 @@ Modèle d'Ising 2D & Physique statistique & $T_c = 2{,}249$ (exact $2{,}269$)\\
 Équation de la chaleur & EDP, analyse numérique & ordre $2{,}01$\\
 SINDy & Physique + apprentissage automatique & $0{,}13\,\%$ d'erreur\\
 Orbites & Mécanique céleste & $T \propto a^{1{,}5000}$\\
+\textbf{Dynamique moléculaire} & Simulation atomistique & 3 phases ; $D \approx 3{,}5\times10^{-5}$~cm$^2$/s\\
+\textbf{Potentiel appris + UQ} & Potentiels interatomiques & $r_e = 0{,}7400 \pm 0{,}0021$~Å\\
+Bell--CHSH & Mécanique quantique & $S = 2{,}848 \pm 0{,}014$\\
 \bottomrule
 \end{tabularx}
 
@@ -74,7 +78,7 @@ Orbites & Mécanique céleste & $T \propto a^{1{,}5000}$\\
   \item \textbf{Partir de la physique} : équations écrites et expliquées avant le code.
   \item \textbf{Coder les algorithmes soi-même} (RK4, Metropolis, Verlet, régression creuse) pour en maîtriser les erreurs.
   \item \textbf{Valider contre une solution exacte} (Onsager, Kepler, solution analytique) avant d'interpréter.
-  \item \textbf{Mesurer} : ordres de convergence, erreurs relatives, tableaux chiffrés.
+  \item \textbf{Quantifier l'incertitude} : erreurs statistiques, ordres de convergence, barres d'erreur propagées.
   \item \textbf{Reproductible} : une commande régénère figures et résultats ; tests automatiques sur GitHub Actions.
 \end{enumerate}
 
@@ -202,5 +206,71 @@ La 3\textsuperscript{e} loi de Kepler est retrouvée sur six planètes (Mercure 
 \begin{minipage}[c]{0.40\linewidth}
 \includegraphics[width=\linewidth]{05-orbites-kepler-integrateurs/figures/03_kepler.png}
 \end{minipage}
+
+
+\clearpage
+% ------------------------------------------------------------------ Projet 6
+\section{Dynamique moléculaire de l'argon (Lennard-Jones)}
+\lien{06-dynamique-moleculaire-lennard-jones}
+
+\noindent 256 atomes en interaction de Lennard-Jones $V(r) = 4\varepsilon[(\sigma/r)^{12} - (\sigma/r)^6]$ (tronqué et décalé à $2{,}5\sigma$), intégrateur Verlet-vitesse, conditions périodiques et image minimale. Équilibrage par thermostat, puis production en NVE. Pression par le théorème du viriel, diffusion par la relation d'Einstein $\langle |\mathbf r(t)-\mathbf r(0)|^2\rangle = 6Dt$. Unités réduites ; pour l'argon, $\sigma = 3{,}405$~Å et $\varepsilon/k_B = 119{,}8$~K.
+
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Phase & $\rho^*$ & $T^*$ mesurée & $P^*$ & $U/N$ & $D^*$ & pic de $g(r)$\\
+\midrule
+Solide (CFC) & 1,10 & 0,513 & 6,55 & $-6{,}71$ & $\approx 0$ & 5,7\\
+Liquide & 0,80 & 1,004 & 1,66 & $-4{,}70$ & \textbf{0,066} & 2,7\\
+Gaz & 0,05 & 1,986 & 0,096 & $-0{,}28$ & 5,8 & 1,6\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\textbf{Validation :} fluctuations d'énergie NVE en $\Delta t^{2{,}04}$ (Verlet : ordre 2) ; distribution des vitesses de Maxwell--Boltzmann (kurtosis 2,995 pour 3 attendu) ; gaz dilué proche du gaz parfait ($P/\rho T = 0{,}96$). Pour le liquide, $D^* = 0{,}066$ correspond à $3{,}5\times10^{-5}$~cm$^2$/s pour l'argon.
+
+\noindent\includegraphics[width=0.49\linewidth]{06-dynamique-moleculaire-lennard-jones/figures/02_g_de_r.png}\hfill
+\includegraphics[width=0.49\linewidth]{06-dynamique-moleculaire-lennard-jones/figures/03_msd_diffusion.png}
+
+% ------------------------------------------------------------------ Projet 7
+\section{Potentiel interatomique appris et quantification d'incertitude}
+\lien{07-potentiel-interatomique-incertitude}
+
+\noindent Processus gaussien codé de zéro (noyau RBF, hyperparamètres par maximum de vraisemblance marginale, Cholesky), entraîné sur 14 énergies bruitées ($\sigma = 0{,}02$~eV) de la molécule H$_2$ ; la courbe de référence est un potentiel de Morse aux paramètres spectroscopiques. L'incertitude est propagée par 2\,000 tirages a posteriori jusqu'à $r_e$ et $\omega_e = \sqrt{k/\mu}/(2\pi c)$.
+
+\begin{center}\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Grandeur & Vraie valeur & Processus gaussien & Lennard-Jones ajusté\\
+\midrule
+$r_e$ (Å) & 0,7414 & $\mathbf{0{,}7400 \pm 0{,}0021}$ & $0{,}543 \pm 0{,}009$\\
+$\omega_e$ (cm$^{-1}$) & 4\,396 & $4\,562 \pm 85$ & $\approx 38\,000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\textbf{Leçons :} (1) l'apprentissage actif (ajouter un point là où l'incertitude est maximale) réduit l'erreur de 34\,\% par rapport à un ajout aléatoire ; (2) avec peu de données, le bruit est sous-estimé et l'intervalle à 95\,\% ne couvre que 85\,\% de la vraie courbe, d'où l'importance de la calibration ; (3) un modèle trop rigide (Lennard-Jones) est faux de 27\,\% sur $r_e$ avec une barre d'erreur minuscule : l'incertitude statistique ne voit pas l'erreur de forme du modèle.
+
+\centerline{\includegraphics[width=\linewidth]{07-potentiel-interatomique-incertitude/figures/01_gp_incertitude.png}}
+
+% ------------------------------------------------------------------ Projet 8
+\section{Inégalités de Bell--CHSH}
+\lien{08-inegalites-bell-chsh}
+
+\noindent Prolongement numérique de mon stage de M1 (modèle de Freund, Institut Denis Poisson). Corrélations calculées par $\langle\psi|A(a)\otimes B(b)|\psi\rangle$ pour l'état singulet, résultats tirés selon la règle de Born et comparaison avec le modèle local à variable cachée de Bell.
+
+\begin{center}\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Quantité & Théorie & Simulation\\
+\midrule
+$S$ quantique (10\,000 paires par réglage) & $2\sqrt2 = 2{,}8284$ & $\mathbf{2{,}848 \pm 0{,}014}$ (60$\sigma$ au-dessus de 2)\\
+$S$ du modèle local & $\le 2$ & $1{,}985 \pm 0{,}017$\\
+Optimum sur les 16 stratégies déterministes & 2 & 2\\
+Maximum par optimisation des angles & Tsirelson $2\sqrt2$ & 2,828427\\
+Seuil de violation pour l'état de Werner & $p = 1/\sqrt2$ & 0,71\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\includegraphics[width=0.49\linewidth]{08-inegalites-bell-chsh/figures/01_correlations.png}\hfill
+\includegraphics[width=0.49\linewidth]{08-inegalites-bell-chsh/figures/03_werner.png}
 
 \end{document}

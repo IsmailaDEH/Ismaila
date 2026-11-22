@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ismaila DEH · Physique numérique</title>
-<meta name="description" content="Portfolio d'Ismaila DEH : simulation numérique, physique statistique, chaos, EDP et apprentissage automatique appliqué à la physique.">
+<title>Ismaila Amadou Deh · Simulation</title>
+<meta name="description" content="Portfolio d'Ismaila Amadou Deh, M2 Théories Quantiques (Tours) : dynamique moléculaire, potentiels interatomiques, quantification d'incertitude, Monte-Carlo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -60,35 +60,50 @@ footer a{margin:0 8px}
 </head>
 <body>
 <header><div class="wrap">
-  <a class="logo" href="#">Ismaila DEH</a>
+  <a class="logo" href="#">Ismaila Amadou Deh</a>
   <nav>
     <a class="lien" href="#projets">Projets</a>
-    <a class="lien" href="#methode">Méthode</a>
+    <a class="lien" href="#parcours">Parcours</a>
     <a class="lien" href="#competences">Compétences</a>
     <button id="theme" aria-label="Changer de thème">☾</button>
   </nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
-  <div class="mono">ISMAILA DEH · ÉTUDIANT EN PHYSIQUE</div>
-  <h1>Physique numérique <em>&amp; modélisation</em></h1>
-  <p class="lead">Je construis des simulations de systèmes physiques (chaos, transitions de phase, diffusion, orbites) et je les confronte à la théorie. J'utilise aussi l'apprentissage automatique pour retrouver des lois physiques à partir de données.</p>
-  <div class="tags"><span class="tag">Python</span><span class="tag">NumPy · SciPy</span><span class="tag">Monte-Carlo</span><span class="tag">EDO / EDP</span><span class="tag">SINDy</span><span class="tag">LaTeX</span></div>
+  <div class="mono">ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · TOURS · STAGE M2 RECHERCHÉ</div>
+  <h1>Simulation <em>&amp; physique des matériaux</em></h1>
+  <p class="lead">Étudiant en Master 2 Physique Fondamentale (Université de Tours, Institut Denis Poisson, CNRS), je recherche un stage de M2 en simulation numérique et physique des matériaux. Ce qui me motive : voir les propriétés macroscopiques émerger de simulations microscopiques, avec des potentiels interatomiques, la dynamique moléculaire et la quantification d'incertitude.</p>
+  <div class="tags"><span class="tag">Dynamique moléculaire</span><span class="tag">Monte-Carlo</span><span class="tag">Processus gaussiens</span><span class="tag">Python · NumPy · SciPy</span><span class="tag">Mathematica · ROOT</span><span class="tag">LaTeX</span></div>
   <a class="btn plein" href="https://github.com/IsmailaDEH/Ismaila">Voir GitHub</a>
   <a class="btn vide" href="https://github.com/IsmailaDEH/Ismaila/raw/main/cv/portfolio.pdf">Portfolio PDF</a>
+  <a class="btn vide" href="https://www.linkedin.com/in/ismaila-amadou-deh">LinkedIn</a>
 </div></div>
 
 <div class="band"><div class="wrap">
-  <div><div class="big">5</div><div class="mono">PROJETS</div></div>
+  <div><div class="big">8</div><div class="mono">PROJETS</div></div>
   <div><div class="big">0,9 %</div><div class="mono">ERREUR SUR T_C (ISING)</div></div>
-  <div><div class="big">0,13 %</div><div class="mono">ERREUR LORENZ (SINDY)</div></div>
-  <div><div class="big">19</div><div class="mono">TESTS AUTOMATIQUES</div></div>
+  <div><div class="big">256</div><div class="mono">ATOMES EN DYNAMIQUE MOLÉCULAIRE</div></div>
+  <div><div class="big">34</div><div class="mono">TESTS AUTOMATIQUES</div></div>
 </div></div>
 
 <section id="projets"><div class="wrap">
   <div class="mono">PROJETS</div>
   <h2>Ce que j'ai construit</h2>
   <div class="projets">
+    <article class="projet">
+      <div><div class="mono">SIMULATION ATOMISTIQUE</div><h3>Dynamique moléculaire de l'argon</h3>
+      <p>256 atomes en interaction de Lennard-Jones, Verlet-vitesse, conditions périodiques, thermostat. Pression par le viriel, structure g(r), diffusion par la relation d'Einstein.</p>
+      <div class="chiffre">3 phases reproduites · D ≈ 3,5 × 10⁻⁵ cm²/s</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/06-dynamique-moleculaire-lennard-jones">Voir le projet →</a></div>
+      <img src="img/md.png" alt="g(r) du solide, du liquide et du gaz" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">POTENTIELS INTERATOMIQUES · UQ</div><h3>Potentiel appris avec incertitude</h3>
+      <p>Processus gaussien codé de zéro sur des énergies bruitées de H₂ ; incertitude propagée à la distance d'équilibre et à la fréquence de vibration ; apprentissage actif.</p>
+      <div class="chiffre">r_e = 0,7400 ± 0,0021 Å (vrai : 0,7414)</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/07-potentiel-interatomique-incertitude">Voir le projet →</a></div>
+      <img src="img/gp.png" alt="Potentiel H2 appris avec bande d'incertitude" loading="lazy">
+    </article>
     <article class="projet">
       <div><div class="mono">PHYSIQUE STATISTIQUE</div><h3>Modèle d'Ising 2D par Monte-Carlo</h3>
       <p>Algorithme de Metropolis vectorisé, balayage en température et analyse de taille finie pour retrouver la température critique d'un aimant.</p>
@@ -124,6 +139,26 @@ footer a{margin:0 8px}
       <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/03-equation-chaleur-differences-finies">Voir le projet →</a></div>
       <img src="img/chaleur.png" alt="Diffusion de la chaleur dans une plaque" loading="lazy">
     </article>
+    <article class="projet">
+      <div><div class="mono">MÉCANIQUE QUANTIQUE</div><h3>Inégalités de Bell–CHSH</h3>
+      <p>Prolongement de mon stage de M1 (modèle de Freund) : expérience de Bell simulée par la règle de Born, modèle local à variables cachées, borne de Tsirelson, état de Werner.</p>
+      <div class="chiffre">S = 2,848 ± 0,014 · violation à 60σ</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/08-inegalites-bell-chsh">Voir le projet →</a></div>
+      <img src="img/bell.png" alt="Distribution de S, quantique vs local" loading="lazy">
+    </article>
+  </div>
+</div></section>
+
+<section id="parcours"><div class="wrap">
+  <div class="mono">PARCOURS</div>
+  <h2>Formation &amp; expériences</h2>
+  <div class="grille">
+    <div class="carte"><h4>M2 Théories Quantiques</h4><p>2026 – 2027 · Université de Tours, Institut Denis Poisson (CNRS UMR 7013).</p></div>
+    <div class="carte"><h4>Stage de recherche M1</h4><p>2025 – 2026 · Institut Denis Poisson, Pr. S. Nicolis. Modèle de Freund, variables cachées fermioniques, Bell et CHSH ; rapport de 46 pages en LaTeX.</p></div>
+    <div class="carte"><h4>M1 · TP avancés</h4><p>2025 – 2026 · Monte-Carlo et Ising 2D, magnétométrie NV (ODMR), RPE / Zeeman, spectroscopie laser.</p></div>
+    <div class="carte"><h4>Licence de Physique</h4><p>2022 – 2025 · Université de Tours. Projet de L3 : modélisation numérique du pendule double (RK4).</p></div>
+    <div class="carte"><h4>L1 Sciences et Techniques</h4><p>2021 – 2022 · Université Cheikh Anta Diop (UCAD), Dakar.</p></div>
+    <div class="carte"><h4>Langues</h4><p>Français (C2), anglais scientifique (B2), pular (langue maternelle), wolof.</p></div>
   </div>
 </div></section>
 
@@ -143,15 +178,16 @@ footer a{margin:0 8px}
   <div class="mono">COMPÉTENCES</div>
   <h2>Boîte à outils</h2>
   <div class="grille">
-    <div class="carte"><h4>Physique</h4><p>Mécanique analytique, physique statistique, transferts thermiques, systèmes dynamiques, mécanique céleste.</p></div>
-    <div class="carte"><h4>Numérique</h4><p>EDO (Euler, RK4, Verlet), différences finies, Monte-Carlo, stabilité et convergence.</p></div>
-    <div class="carte"><h4>Données &amp; outils</h4><p>Python, NumPy, SciPy, Matplotlib, régression creuse, pytest, Git, GitHub Actions, LaTeX.</p></div>
+    <div class="carte"><h4>Physique</h4><p>Physique statistique quantique, mécanique quantique, théorie classique des champs, physique subatomique, spectroscopie, magnétométrie.</p></div>
+    <div class="carte"><h4>Simulation</h4><p>Dynamique moléculaire, Monte-Carlo (Metropolis), EDO (RK4, Verlet), différences finies, processus gaussiens, quantification d'incertitude.</p></div>
+    <div class="carte"><h4>Outils</h4><p>Python (NumPy, SciPy, Matplotlib), pytest, Git, GitHub Actions, LaTeX (Overleaf), Mathematica, Maple, ROOT.</p></div>
   </div>
 </div></section>
 
 <footer class="mono">
-  © 2026 Ismaila DEH<br><br>
+  © 2026 Ismaila Amadou Deh<br><br>
   <a href="https://github.com/IsmailaDEH">GitHub</a>
+  <a href="https://www.linkedin.com/in/ismaila-amadou-deh">LinkedIn</a>
 </footer>
 
 <script>

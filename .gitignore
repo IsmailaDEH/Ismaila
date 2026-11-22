@@ -14,3 +14,6 @@ venv/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# CV avec coordonnées personnelles (téléphone, adresse) : non publié
+cv-prive/

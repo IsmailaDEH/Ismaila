@@ -73,7 +73,7 @@ python -m pytest tests
 
 ## 👤 Auteur
 
-**Ismaila DEH**, étudiant en physique · [GitHub](https://github.com/IsmailaDEH)
+**Ismaila AMADOU DEH**, M2 Physique Fondamentale (Théories Quantiques), Université de Tours · [GitHub](https://github.com/IsmailaDEH) · [LinkedIn](https://www.linkedin.com/in/ismaila-amadou-deh)
 
 ## 🔗 Projets connexes
 

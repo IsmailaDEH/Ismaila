@@ -1,6 +1,6 @@
 # 🌀 Pendule double : mesurer le chaos
 
-> Projet de physique numérique : simulation du pendule double et mesure quantitative du chaos (exposants de Lyapunov).
+> Projet de modélisation de **Licence 3** (Université de Tours), repris et approfondi : simulation du pendule double et mesure quantitative du chaos (exposants de Lyapunov).
 
 ![tests](https://img.shields.io/badge/tests-4%20passés-brightgreen) ![python](https://img.shields.io/badge/python-3.10+-blue) ![numpy](https://img.shields.io/badge/NumPy-RK4-informational)
 
@@ -76,7 +76,7 @@ python -m pytest tests     # 4 tests
 
 ## 👤 Auteur
 
-**Ismaila DEH**, étudiant en physique · [GitHub](https://github.com/IsmailaDEH)
+**Ismaila AMADOU DEH**, M2 Physique Fondamentale (Théories Quantiques), Université de Tours · [GitHub](https://github.com/IsmailaDEH) · [LinkedIn](https://www.linkedin.com/in/ismaila-amadou-deh)
 
 ## 🔗 Projets connexes
 
