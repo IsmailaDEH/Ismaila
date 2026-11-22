@@ -1,0 +1,21 @@
+{
+  "experience_10000_paires_par_reglage": {
+    "S_quantique_theorie": -2.8284,
+    "S_quantique_mesure": [
+      -2.848,
+      0.014
+    ],
+    "violation_en_ecarts_types": 60.4,
+    "S_modele_local": [
+      -1.985,
+      0.017
+    ],
+    "S_max_16_strategies_deterministes": 2
+  },
+  "S_max_optimise": 2.828427,
+  "tsirelson_2rac2": 2.828427,
+  "werner_seuil_violation": {
+    "numerique": 0.71,
+    "theorique_1_sur_rac2": 0.707
+  }
+}

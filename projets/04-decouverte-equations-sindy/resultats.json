@@ -1,0 +1,42 @@
+{
+  "tableau_bruit": [
+    {
+      "bruit_pct": 0.0,
+      "sigma": 9.999,
+      "rho": 27.992,
+      "beta": 2.666,
+      "erreur_max_pct": 0.03,
+      "structure_exacte": true
+    },
+    {
+      "bruit_pct": 0.1,
+      "sigma": 10.0,
+      "rho": 27.995,
+      "beta": 2.667,
+      "erreur_max_pct": 0.02,
+      "structure_exacte": true
+    },
+    {
+      "bruit_pct": 1.0,
+      "sigma": 9.994,
+      "rho": 27.963,
+      "beta": 2.666,
+      "erreur_max_pct": 0.13,
+      "structure_exacte": true
+    },
+    {
+      "bruit_pct": 5.0,
+      "sigma": 9.83,
+      "rho": 25.285,
+      "beta": 2.661,
+      "erreur_max_pct": 9.7,
+      "structure_exacte": false
+    }
+  ],
+  "equations_bruit_1pct": [
+    "dx/dt = -9.99·x +9.99·y",
+    "dy/dt = +27.96·x -0.98·y -1.00·xz",
+    "dz/dt = -2.67·z +1.00·xy"
+  ],
+  "horizon_prediction_s": 4.07
+}

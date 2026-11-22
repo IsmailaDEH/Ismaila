@@ -1,0 +1,45 @@
+{
+  "fluctuation_energie_relative": {
+    "0.01": "3.3e-04",
+    "0.005": "9.1e-05",
+    "0.0025": "2.0e-05"
+  },
+  "ordre_fluctuation_energie": 2.04,
+  "phases": {
+    "solide": {
+      "densite": 1.1,
+      "T_cible": 0.5,
+      "T_mesuree": 0.513,
+      "pression": 6.553,
+      "energie_potentielle_par_atome": -6.712,
+      "D": 5.34e-06,
+      "D_argon_cm2_s": 2.9e-09,
+      "premier_pic_g": 1.064,
+      "hauteur_pic_g": 5.7
+    },
+    "liquide": {
+      "densite": 0.8,
+      "T_cible": 1.0,
+      "T_mesuree": 1.004,
+      "pression": 1.655,
+      "energie_potentielle_par_atome": -4.7,
+      "D": 0.0655,
+      "D_argon_cm2_s": 3.5e-05,
+      "premier_pic_g": 1.097,
+      "hauteur_pic_g": 2.67
+    },
+    "gaz": {
+      "densite": 0.05,
+      "T_cible": 2.0,
+      "T_mesuree": 1.986,
+      "pression": 0.096,
+      "energie_potentielle_par_atome": -0.282,
+      "D": 5.83,
+      "D_argon_cm2_s": 0.0031,
+      "premier_pic_g": 1.185,
+      "hauteur_pic_g": 1.59
+    }
+  },
+  "ecart_max_maxwell": 0.0083,
+  "kurtosis_vx": 2.995
+}

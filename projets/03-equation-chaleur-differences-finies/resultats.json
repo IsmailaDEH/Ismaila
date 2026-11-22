@@ -1,0 +1,17 @@
+{
+  "ftcs_erreurs_Linf": {
+    "10": "4.29e-03",
+    "20": "1.06e-03",
+    "40": "2.65e-04",
+    "80": "6.62e-05"
+  },
+  "ftcs_ordre_spatial": 2.01,
+  "cn_ordre_temporel": 2.01,
+  "stabilite": {
+    "0.1": "stable",
+    "0.2": "stable",
+    "0.25": "stable",
+    "0.26": "instable",
+    "0.3": "instable"
+  }
+}

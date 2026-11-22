@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ismaila Amadou Deh · Simulation</title>
+<meta name="description" content="Portfolio d'Ismaila Amadou Deh, M2 Théories Quantiques (Tours) : dynamique moléculaire, potentiels interatomiques, quantification d'incertitude, Monte-Carlo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f2ee;--bg2:#ebe8e2;--fg:#1a1917;--muted:#6b675f;--line:#d9d5cc;--card:#fbfaf7;--accent:#1f4e79;--band:#1a1917;--bandfg:#f4f2ee}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141413;--bg2:#1c1b19;--fg:#ece9e2;--muted:#9a958b;--line:#2e2c28;--card:#1c1b19;--accent:#8db8e0;--band:#ece9e2;--bandfg:#141413}}
+:root[data-theme="dark"]{--bg:#141413;--bg2:#1c1b19;--fg:#ece9e2;--muted:#9a958b;--line:#2e2c28;--card:#1c1b19;--accent:#8db8e0;--band:#ece9e2;--bandfg:#141413}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 "DM Sans",system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+@media(min-width:700px){.wrap{padding:0 32px}}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:600 1.35rem "Cormorant Garamond",serif;text-decoration:none}
+nav{display:flex;gap:18px;align-items:center;font-size:.9rem}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--fg)}
+nav .lien{display:none}@media(min-width:700px){nav .lien{display:inline}}
+#theme{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1rem}
+.mono{font:400 .78rem "JetBrains Mono",monospace;letter-spacing:.08em;color:var(--muted)}
+.hero{padding:80px 0 64px;background:radial-gradient(circle at 85% 20%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 45%)}
+h1{font:600 clamp(2.6rem,8vw,4.6rem)/1.05 "Cormorant Garamond",serif;margin:18px 0 22px}
+h1 em{font-weight:500;color:var(--muted)}
+.lead{max-width:640px;font-size:1.08rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px}
+.tag{font:400 .75rem "JetBrains Mono",monospace;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:500;margin:0 8px 8px 0}
+.btn.plein{background:var(--fg);color:var(--bg)}.btn.vide{border:1px solid var(--line)}
+.band{background:var(--band);color:var(--bandfg)}
+.band .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding-top:36px;padding-bottom:36px}
+@media(min-width:700px){.band .wrap{grid-template-columns:repeat(4,1fr)}}
+.big{font:500 2.4rem/1 "Cormorant Garamond",serif}
+.band .mono{color:color-mix(in srgb,var(--bandfg) 60%,transparent);margin-top:6px}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+h2{font:600 2.1rem "Cormorant Garamond",serif;margin:8px 0 28px}
+.projets{display:grid;gap:22px}
+.projet{display:grid;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;overflow:hidden}
+@media(min-width:800px){.projet{grid-template-columns:1.1fr 1fr;align-items:center}}
+.projet img{width:100%;border-radius:8px;background:#fff}
+.projet h3{font:600 1.6rem/1.15 "Cormorant Garamond",serif;margin:6px 0 10px}
+.projet p{margin:0 0 14px;color:var(--muted)}
+.chiffre{display:inline-block;font:500 .82rem "JetBrains Mono",monospace;color:var(--accent);border-left:2px solid var(--accent);padding-left:10px;margin-bottom:14px}
+.projet a.voir{font-weight:500;text-decoration:none;border-bottom:1px solid var(--fg)}
+.grille{display:grid;gap:18px}@media(min-width:700px){.grille{grid-template-columns:repeat(3,1fr)}}
+.carte{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.carte h4{margin:0 0 8px;font:600 1.25rem "Cormorant Garamond",serif}
+.carte p{margin:0;color:var(--muted);font-size:.95rem}
+ol.methode{padding-left:1.2em;max-width:700px}ol.methode li{margin-bottom:10px}
+footer{padding:36px 0;text-align:center}
+footer a{margin:0 8px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Ismaila Amadou Deh</a>
+  <nav>
+    <a class="lien" href="#projets">Projets</a>
+    <a class="lien" href="#parcours">Parcours</a>
+    <a class="lien" href="#competences">Compétences</a>
+    <button id="theme" aria-label="Changer de thème">☾</button>
+  </nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="mono">ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · TOURS · STAGE M2 RECHERCHÉ</div>
+  <h1>Simulation <em>&amp; physique des matériaux</em></h1>
+  <p class="lead">Étudiant en Master 2 Physique Fondamentale (Université de Tours, Institut Denis Poisson, CNRS), je recherche un stage de M2 en simulation numérique et physique des matériaux. Ce qui me motive : voir les propriétés macroscopiques émerger de simulations microscopiques, avec des potentiels interatomiques, la dynamique moléculaire et la quantification d'incertitude.</p>
+  <div class="tags"><span class="tag">Dynamique moléculaire</span><span class="tag">Monte-Carlo</span><span class="tag">Processus gaussiens</span><span class="tag">Python · NumPy · SciPy</span><span class="tag">Mathematica · ROOT</span><span class="tag">LaTeX</span></div>
+  <a class="btn plein" href="https://github.com/IsmailaDEH/Ismaila">Voir GitHub</a>
+  <a class="btn vide" href="https://github.com/IsmailaDEH/Ismaila/raw/main/cv/portfolio.pdf">Portfolio PDF</a>
+  <a class="btn vide" href="https://www.linkedin.com/in/ismaila-amadou-deh">LinkedIn</a>
+</div></div>
+
+<div class="band"><div class="wrap">
+  <div><div class="big">8</div><div class="mono">PROJETS</div></div>
+  <div><div class="big">0,9 %</div><div class="mono">ERREUR SUR T_C (ISING)</div></div>
+  <div><div class="big">256</div><div class="mono">ATOMES EN DYNAMIQUE MOLÉCULAIRE</div></div>
+  <div><div class="big">34</div><div class="mono">TESTS AUTOMATIQUES</div></div>
+</div></div>
+
+<section id="projets"><div class="wrap">
+  <div class="mono">PROJETS</div>
+  <h2>Ce que j'ai construit</h2>
+  <div class="projets">
+    <article class="projet">
+      <div><div class="mono">SIMULATION ATOMISTIQUE</div><h3>Dynamique moléculaire de l'argon</h3>
+      <p>256 atomes en interaction de Lennard-Jones, Verlet-vitesse, conditions périodiques, thermostat. Pression par le viriel, structure g(r), diffusion par la relation d'Einstein.</p>
+      <div class="chiffre">3 phases reproduites · D ≈ 3,5 × 10⁻⁵ cm²/s</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/06-dynamique-moleculaire-lennard-jones">Voir le projet →</a></div>
+      <img src="img/md.png" alt="g(r) du solide, du liquide et du gaz" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">POTENTIELS INTERATOMIQUES · UQ</div><h3>Potentiel appris avec incertitude</h3>
+      <p>Processus gaussien codé de zéro sur des énergies bruitées de H₂ ; incertitude propagée à la distance d'équilibre et à la fréquence de vibration ; apprentissage actif.</p>
+      <div class="chiffre">r_e = 0,7400 ± 0,0021 Å (vrai : 0,7414)</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/07-potentiel-interatomique-incertitude">Voir le projet →</a></div>
+      <img src="img/gp.png" alt="Potentiel H2 appris avec bande d'incertitude" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">PHYSIQUE STATISTIQUE</div><h3>Modèle d'Ising 2D par Monte-Carlo</h3>
+      <p>Algorithme de Metropolis vectorisé, balayage en température et analyse de taille finie pour retrouver la température critique d'un aimant.</p>
+      <div class="chiffre">T_c = 2,249 · exact 2,269 (Onsager)</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/02-modele-ising-monte-carlo">Voir le projet →</a></div>
+      <img src="img/ising.png" alt="Configurations de spins à trois températures" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">PHYSIQUE + MACHINE LEARNING</div><h3>Découverte automatique d'équations</h3>
+      <p>Régression creuse (SINDy) codée de zéro : à partir de données bruitées, l'algorithme renvoie les équations de Lorenz sous forme lisible.</p>
+      <div class="chiffre">7 termes retenus sur 30 · 0,13 % d'erreur à 1 % de bruit</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/04-decouverte-equations-sindy">Voir le projet →</a></div>
+      <img src="img/sindy.png" alt="Attracteur de Lorenz : données et modèle appris" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">CHAOS · SYSTÈMES DYNAMIQUES</div><h3>Pendule double : mesurer le chaos</h3>
+      <p>Équations de Lagrange, intégrateur RK4 validé par la conservation de l'énergie, exposants de Lyapunov et carte des régions chaotiques.</p>
+      <div class="chiffre">λ = 0,75 s⁻¹ · dérive d'énergie 2 × 10⁻⁷</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/01-pendule-double-chaos">Voir le projet →</a></div>
+      <img src="img/pendule.png" alt="Carte des exposants de Lyapunov" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">MÉCANIQUE CÉLESTE</div><h3>Orbites et intégrateurs numériques</h3>
+      <p>Euler, RK4 et Verlet comparés sur 50 révolutions ; la 3ᵉ loi de Kepler est retrouvée sur six planètes du système solaire.</p>
+      <div class="chiffre">pente log T / log a = 1,5000 · L conservé à 10⁻¹⁵</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/05-orbites-kepler-integrateurs">Voir le projet →</a></div>
+      <img src="img/orbites.png" alt="Comparaison des intégrateurs" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">EDP · ANALYSE NUMÉRIQUE</div><h3>Équation de la chaleur</h3>
+      <p>Schémas FTCS 2D et Crank–Nicolson : ordre de convergence et seuil de stabilité vérifiés contre la solution exacte.</p>
+      <div class="chiffre">ordre 2,01 · instable dès r = 0,26 (théorie 0,25)</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/03-equation-chaleur-differences-finies">Voir le projet →</a></div>
+      <img src="img/chaleur.png" alt="Diffusion de la chaleur dans une plaque" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">MÉCANIQUE QUANTIQUE</div><h3>Inégalités de Bell–CHSH</h3>
+      <p>Prolongement de mon stage de M1 (modèle de Freund) : expérience de Bell simulée par la règle de Born, modèle local à variables cachées, borne de Tsirelson, état de Werner.</p>
+      <div class="chiffre">S = 2,848 ± 0,014 · violation à 60σ</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/08-inegalites-bell-chsh">Voir le projet →</a></div>
+      <img src="img/bell.png" alt="Distribution de S, quantique vs local" loading="lazy">
+    </article>
+  </div>
+</div></section>
+
+<section id="parcours"><div class="wrap">
+  <div class="mono">PARCOURS</div>
+  <h2>Formation &amp; expériences</h2>
+  <div class="grille">
+    <div class="carte"><h4>M2 Théories Quantiques</h4><p>2026 – 2027 · Université de Tours, Institut Denis Poisson (CNRS UMR 7013).</p></div>
+    <div class="carte"><h4>Stage de recherche M1</h4><p>2025 – 2026 · Institut Denis Poisson, Pr. S. Nicolis. Modèle de Freund, variables cachées fermioniques, Bell et CHSH ; rapport de 46 pages en LaTeX.</p></div>
+    <div class="carte"><h4>M1 · TP avancés</h4><p>2025 – 2026 · Monte-Carlo et Ising 2D, magnétométrie NV (ODMR), RPE / Zeeman, spectroscopie laser.</p></div>
+    <div class="carte"><h4>Licence de Physique</h4><p>2022 – 2025 · Université de Tours. Projet de L3 : modélisation numérique du pendule double (RK4).</p></div>
+    <div class="carte"><h4>L1 Sciences et Techniques</h4><p>2021 – 2022 · Université Cheikh Anta Diop (UCAD), Dakar.</p></div>
+    <div class="carte"><h4>Langues</h4><p>Français (C2), anglais scientifique (B2), pular (langue maternelle), wolof.</p></div>
+  </div>
+</div></section>
+
+<section id="methode"><div class="wrap">
+  <div class="mono">MÉTHODE</div>
+  <h2>Ma façon de travailler</h2>
+  <ol class="methode">
+    <li><strong>Partir de la physique</strong> : les équations sont écrites et expliquées avant le code.</li>
+    <li><strong>Coder les algorithmes moi-même</strong> (RK4, Metropolis, Verlet, régression creuse) pour en maîtriser les erreurs.</li>
+    <li><strong>Valider contre une solution exacte</strong> avant d'interpréter un résultat.</li>
+    <li><strong>Mesurer</strong> : ordres de convergence, erreurs relatives, tableaux chiffrés.</li>
+    <li><strong>Reproductible</strong> : une commande régénère les figures, et les tests tournent sur GitHub Actions.</li>
+  </ol>
+</div></section>
+
+<section id="competences"><div class="wrap">
+  <div class="mono">COMPÉTENCES</div>
+  <h2>Boîte à outils</h2>
+  <div class="grille">
+    <div class="carte"><h4>Physique</h4><p>Physique statistique quantique, mécanique quantique, théorie classique des champs, physique subatomique, spectroscopie, magnétométrie.</p></div>
+    <div class="carte"><h4>Simulation</h4><p>Dynamique moléculaire, Monte-Carlo (Metropolis), EDO (RK4, Verlet), différences finies, processus gaussiens, quantification d'incertitude.</p></div>
+    <div class="carte"><h4>Outils</h4><p>Python (NumPy, SciPy, Matplotlib), pytest, Git, GitHub Actions, LaTeX (Overleaf), Mathematica, Maple, ROOT.</p></div>
+  </div>
+</div></section>
+
+<footer class="mono">
+  © 2026 Ismaila Amadou Deh<br><br>
+  <a href="https://github.com/IsmailaDEH">GitHub</a>
+  <a href="https://www.linkedin.com/in/ismaila-amadou-deh">LinkedIn</a>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('theme'),r=document.documentElement;
+  function sombre(){var t=r.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+  function maj(){b.textContent=sombre()?'☀':'☾'}
+  try{var s=localStorage.getItem('theme');if(s)r.setAttribute('data-theme',s)}catch(e){}
+  maj();
+  b.addEventListener('click',function(){var n=sombre()?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}maj()});
+})();
+</script>
+</body>
+</html>
