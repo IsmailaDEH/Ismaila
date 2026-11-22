@@ -1,0 +1,36 @@
+{
+  "comparaison_50_ans": {
+    "Euler": {
+      "derive_energie_finale": "1.1e+00",
+      "derive_L_finale": "4.1e-01",
+      "evaluations_force_par_pas": 1
+    },
+    "RK4": {
+      "derive_energie_finale": "3.3e-04",
+      "derive_L_finale": "3.7e-05",
+      "evaluations_force_par_pas": 4
+    },
+    "Verlet": {
+      "derive_energie_finale": "7.1e-03",
+      "derive_L_finale": "8.1e-15",
+      "evaluations_force_par_pas": 1
+    }
+  },
+  "ordres_convergence": {
+    "Euler": 0.54,
+    "RK4": 4.3,
+    "Verlet": 1.99
+  },
+  "kepler_3": {
+    "pente_logT_loga": 1.5,
+    "theorique": 1.5,
+    "periodes_annees": {
+      "Mercure": 0.241,
+      "Vénus": 0.615,
+      "Terre": 1.0,
+      "Mars": 1.881,
+      "Jupiter": 11.868,
+      "Saturne": 29.452
+    }
+  }
+}

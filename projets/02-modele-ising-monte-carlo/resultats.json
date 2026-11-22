@@ -1,0 +1,10 @@
+{
+  "Tc_par_taille": {
+    "8": 2.512,
+    "16": 2.402,
+    "32": 2.304
+  },
+  "Tc_extrapole": 2.249,
+  "Tc_onsager": 2.269,
+  "erreur_relative_pct": 0.91
+}
