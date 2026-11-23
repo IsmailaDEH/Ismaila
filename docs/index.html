@@ -72,18 +72,18 @@ footer a{margin:0 8px}
 <div class="hero"><div class="wrap">
   <div class="mono">ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · TOURS · STAGE M2 RECHERCHÉ</div>
   <h1>Simulation <em>&amp; physique des matériaux</em></h1>
-  <p class="lead">Étudiant en Master 2 Physique Fondamentale (Université de Tours, Institut Denis Poisson, CNRS), je recherche un stage de M2 en simulation numérique, matière condensée et technologies quantiques. Ce qui me motive : voir les propriétés macroscopiques émerger de règles microscopiques, de la croissance d'un film mince aux électrons corrélés et aux qubits.</p>
-  <div class="tags"><span class="tag">Monte-Carlo cinétique</span><span class="tag">Diagonalisation exacte</span><span class="tag">Lindblad</span><span class="tag">Dynamique moléculaire</span><span class="tag">Monte-Carlo</span><span class="tag">Python · NumPy · SciPy</span><span class="tag">Mathematica · ROOT</span><span class="tag">LaTeX</span></div>
+  <p class="lead">Étudiant en Master 2 Physique Fondamentale (Université de Tours, Institut Denis Poisson, CNRS), je recherche un stage de M2 en simulation numérique, matière condensée et technologies quantiques. Ce qui me motive : voir les propriétés macroscopiques émerger de règles microscopiques, de la croissance d'un film mince aux électrons corrélés, aux qubits et aux ions piégés.</p>
+  <div class="tags"><span class="tag">Monte-Carlo cinétique</span><span class="tag">Diagonalisation exacte</span><span class="tag">Lindblad</span><span class="tag">Ions piégés</span><span class="tag">Qubits de chat</span><span class="tag">Dynamique moléculaire</span><span class="tag">Monte-Carlo</span><span class="tag">Python · NumPy · SciPy</span><span class="tag">Mathematica · ROOT</span><span class="tag">LaTeX</span></div>
   <a class="btn plein" href="https://github.com/IsmailaDEH/Ismaila">Voir GitHub</a>
   <a class="btn vide" href="https://github.com/IsmailaDEH/Ismaila/raw/main/cv/portfolio.pdf">Portfolio PDF</a>
   <a class="btn vide" href="https://www.linkedin.com/in/ismaila-amadou-deh">LinkedIn</a>
 </div></div>
 
 <div class="band"><div class="wrap">
-  <div><div class="big">11</div><div class="mono">PROJETS</div></div>
+  <div><div class="big">12</div><div class="mono">PROJETS</div></div>
   <div><div class="big">0,9 %</div><div class="mono">ERREUR SUR T_C (ISING)</div></div>
   <div><div class="big">63 504</div><div class="mono">ÉTATS DIAGONALISÉS (HUBBARD)</div></div>
-  <div><div class="big">61</div><div class="mono">TESTS AUTOMATIQUES</div></div>
+  <div><div class="big">70</div><div class="mono">TESTS AUTOMATIQUES</div></div>
 </div></div>
 
 <section id="projets"><div class="wrap">
@@ -110,6 +110,20 @@ footer a{margin:0 8px}
       <div class="chiffre">T₂ = 17,14 ± 0,09 µs extrait · injecté 17,14 µs</div><br>
       <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/11-qubit-decoherence-lindblad">Voir le projet →</a></div>
       <img src="img/lindblad.png" alt="Franges de Ramsey amorties" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">IONS PIÉGÉS · REFROIDISSEMENT LASER</div><h3>Ion piégé : bandes latérales et refroidissement</h3>
+      <p>Qubit optique couplé au mouvement dans le piège : spectre exact, thermométrie par asymétrie rouge/bleu, refroidissement par bande latérale jusqu'à l'état fondamental, par diagonalisation du liouvillien.</p>
+      <div class="chiffre">n̄∞ à 1,7 % des équations de taux · couplages de Laguerre à 10⁻¹⁵</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/Ismaila/tree/main/projets/12-ion-piege-bandes-laterales">Voir le projet →</a></div>
+      <img src="img/ion.png" alt="Spectre de bandes latérales d'un ion piégé, chaud et refroidi" loading="lazy">
+    </article>
+    <article class="projet">
+      <div><div class="mono">QUBITS BOSONIQUES · DÉPÔT SÉPARÉ</div><h3>Simulateur de qubit de chat</h3>
+      <p>États chats et fonction de Wigner exacte, porte Z sur un chat de Kerr calibrée et validée contre la théorie, protection exponentielle contre les bit-flips d'un chat dissipatif. Application Streamlit.</p>
+      <div class="chiffre">temps de bit-flip × 5,6 × 10⁵ de |α|² = 1 à 6 · porte Z à 99,91 %</div><br>
+      <a class="voir" href="https://github.com/IsmailaDEH/cat-qubit-simulator">Voir le dépôt →</a></div>
+      <img src="img/cat.png" alt="Fonctions de Wigner d'états chats" loading="lazy">
     </article>
     <article class="projet">
       <div><div class="mono">SIMULATION ATOMISTIQUE</div><h3>Dynamique moléculaire de l'argon</h3>
@@ -188,7 +202,7 @@ footer a{margin:0 8px}
   <h2>Ma façon de travailler</h2>
   <ol class="methode">
     <li><strong>Partir de la physique</strong> : les équations sont écrites et expliquées avant le code.</li>
-    <li><strong>Coder les algorithmes moi-même</strong> (RK4, Metropolis, BKL, Lanczos, Verlet, régression creuse) pour en maîtriser les erreurs.</li>
+    <li><strong>Coder les algorithmes moi-même</strong> (RK4, Metropolis, BKL, Lanczos, Lindblad, Verlet, régression creuse) pour en maîtriser les erreurs.</li>
     <li><strong>Valider contre une solution exacte</strong> avant d'interpréter un résultat.</li>
     <li><strong>Mesurer</strong> : ordres de convergence, erreurs relatives, tableaux chiffrés.</li>
     <li><strong>Reproductible</strong> : une commande régénère les figures, et les tests tournent sur GitHub Actions.</li>

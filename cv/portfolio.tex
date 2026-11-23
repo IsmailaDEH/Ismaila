@@ -39,11 +39,11 @@
 {\color{gris}\small\texttt{ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · UNIVERSITÉ DE TOURS}}\\[0.6cm]
 {\fontsize{38}{42}\selectfont\bfseries Simulation\\[4pt]\color{gris}\itshape \& physique quantique}\\[1cm]
 \begin{minipage}{0.85\linewidth}\large
-Étudiant en Master 2 Physique Fondamentale, parcours Théories Quantiques (Université de Tours, Institut Denis Poisson, CNRS UMR 7013). \textbf{Je recherche un stage de M2 (puis une thèse) en simulation numérique, matière condensée et technologies quantiques.} Ce portfolio rassemble onze projets de simulation, du Monte-Carlo cinétique aux électrons corrélés et aux qubits, tous validés contre la théorie.
+Étudiant en Master 2 Physique Fondamentale, parcours Théories Quantiques (Université de Tours, Institut Denis Poisson, CNRS UMR 7013). \textbf{Je recherche un stage de M2 (puis une thèse) en simulation numérique, matière condensée et technologies quantiques.} Ce portfolio rassemble douze projets de simulation, du Monte-Carlo cinétique aux électrons corrélés, aux qubits et aux ions piégés, tous validés contre la théorie.
 \end{minipage}
 
 \vspace{1cm}
-\noindent\chiffre{11}{projets}\hfill\chiffre{63\,504}{états diagonalisés (Hubbard)}\hfill\chiffre{$\chi=0{,}313$}{exposant de nucléation (théorie 1/3)}\hfill\chiffre{61}{tests automatiques}
+\noindent\chiffre{12}{projets}\hfill\chiffre{63\,504}{états diagonalisés (Hubbard)}\hfill\chiffre{$\chi=0{,}313$}{exposant de nucléation (théorie 1/3)}\hfill\chiffre{70}{tests automatiques}
 
 \vspace{1cm}
 \begin{center}
@@ -73,6 +73,7 @@ Bell--CHSH & Mécanique quantique & $S = 2{,}848 \pm 0{,}014$\\
 \textbf{Croissance épitaxiale (KMC)} & Croissance de films minces & $\chi = 0{,}313$ (théorie $1/3$)\\
 \textbf{Modèle de Hubbard} & Électrons corrélés & $J = 4t^2/U$ retrouvé à $0{,}2\,\%$\\
 \textbf{Décohérence d'un qubit} & Systèmes quantiques ouverts & $T_2 = 17{,}14 \pm 0{,}09~\mu$s\\
+\textbf{Ion piégé} & Ions piégés, refroidissement laser & $\bar n_\infty$ à $1{,}7\,\%$ des équations de taux\\
 \bottomrule
 \end{tabularx}
 
@@ -80,7 +81,7 @@ Bell--CHSH & Mécanique quantique & $S = 2{,}848 \pm 0{,}014$\\
 \begin{enumerate}
   \item \textbf{Partir de la physique} : équations écrites et expliquées avant le code.
   \item \textbf{Coder les algorithmes soi-même} (BKL, Lanczos, Lindblad, RK4, Metropolis, Verlet, régression creuse) pour en maîtriser les erreurs.
-  \item \textbf{Valider contre une solution exacte} (Bethe ansatz, équations de Bloch, Onsager, Kepler) avant d'interpréter.
+  \item \textbf{Valider contre une solution exacte} (Bethe ansatz, équations de Bloch, Onsager, Kepler, formule de Laguerre) avant d'interpréter.
   \item \textbf{Quantifier l'incertitude} : erreurs statistiques, ordres de convergence, barres d'erreur propagées.
   \item \textbf{Reproductible} : une commande régénère figures et résultats ; tests automatiques sur GitHub Actions.
 \end{enumerate}
@@ -334,5 +335,27 @@ Population stationnaire & Bloch : $0{,}499852$ & Lindblad : $0{,}499852$\\
 \end{tabular}
 \end{center}
 \centerline{\includegraphics[width=\linewidth]{11-qubit-decoherence-lindblad/figures/01_T1_ramsey_rabi.png}}
+
+% ------------------------------------------------------------------ Projet 12
+\newpage
+\section{Ion piégé : bandes latérales et refroidissement laser}
+\lien{12-ion-piege-bandes-laterales}
+
+\noindent Qubit optique couplé au mouvement dans le piège, $H = \nu a^\dagger a - \tfrac{\Delta}{2}\sigma_z + \tfrac{\Omega}{2}\left[\sigma_+ e^{i\eta(a+a^\dagger)} + \text{h.c.}\right]$, avec émission spontanée et recul $L_\pm = \sqrt{\Gamma/2}\,\sigma_- e^{\pm i\eta(a+a^\dagger)}$. Spectre exact (porteuse, bandes rouge et bleue), thermométrie par asymétrie rouge/bleu, puis refroidissement par bande latérale : état stationnaire et dynamique obtenus par diagonalisation du liouvillien, comparés aux équations de taux de Lamb-Dicke.
+
+\begin{center}\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Grandeur & Simulation & Référence\\
+\midrule
+Couplages $\Omega_{n\to m}$ ($\eta = 0{,}3$) & matrice $e^{i\eta(a+a^\dagger)}$ & Laguerre : écart $6\times10^{-15}$\\
+Thermométrie ($\bar n = 1$ ; $5$) & $1{,}002$ ; $5{,}004$ & $\bar n/(\bar n+1)$ exact\\
+Taux de refroidissement & $1{,}876\times10^{-4}\,\nu$ & $1{,}97\times10^{-4}\,\nu$\\
+$\bar n_\infty(\Gamma)$, 9 valeurs & pente $1{,}99$ & écart $\le 1{,}7\,\%$, pente $2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=\linewidth]{12-ion-piege-bandes-laterales/figures/02_spectre_bandes_laterales.png}}
+\centerline{\includegraphics[width=\linewidth]{12-ion-piege-bandes-laterales/figures/03_refroidissement.png}}
 
 \end{document}
