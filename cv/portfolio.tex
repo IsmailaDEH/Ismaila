@@ -37,23 +37,23 @@
 \thispagestyle{empty}
 \vspace*{2cm}
 {\color{gris}\small\texttt{ISMAILA AMADOU DEH · MASTER 2 THÉORIES QUANTIQUES · UNIVERSITÉ DE TOURS}}\\[0.6cm]
-{\fontsize{38}{42}\selectfont\bfseries Simulation\\[4pt]\color{gris}\itshape \& physique des matériaux}\\[1cm]
+{\fontsize{38}{42}\selectfont\bfseries Simulation\\[4pt]\color{gris}\itshape \& physique quantique}\\[1cm]
 \begin{minipage}{0.85\linewidth}\large
-Étudiant en Master 2 Physique Fondamentale, parcours Théories Quantiques (Université de Tours, Institut Denis Poisson, CNRS UMR 7013). \textbf{Je recherche un stage de M2 en simulation numérique et physique des matériaux} : dynamique moléculaire, potentiels interatomiques, quantification d'incertitude. Ce portfolio rassemble huit projets de simulation, tous validés contre la théorie.
+Étudiant en Master 2 Physique Fondamentale, parcours Théories Quantiques (Université de Tours, Institut Denis Poisson, CNRS UMR 7013). \textbf{Je recherche un stage de M2 (puis une thèse) en simulation numérique, matière condensée et technologies quantiques.} Ce portfolio rassemble onze projets de simulation, du Monte-Carlo cinétique aux électrons corrélés et aux qubits, tous validés contre la théorie.
 \end{minipage}
 
 \vspace{1cm}
-\noindent\chiffre{8}{projets}\hfill\chiffre{256}{atomes en dynamique moléculaire}\hfill\chiffre{0,9\,\%}{erreur sur $T_c$ (Ising)}\hfill\chiffre{34}{tests automatiques}
+\noindent\chiffre{11}{projets}\hfill\chiffre{63\,504}{états diagonalisés (Hubbard)}\hfill\chiffre{$\chi=0{,}313$}{exposant de nucléation (théorie 1/3)}\hfill\chiffre{61}{tests automatiques}
 
 \vspace{1cm}
 \begin{center}
-\includegraphics[width=0.6\linewidth]{06-dynamique-moleculaire-lennard-jones/figures/02_g_de_r.png}
+\includegraphics[width=0.95\linewidth]{09-epitaxie-monte-carlo-cinetique/figures/02_morphologies.png}
 \end{center}
 
 \vfill
 \noindent\textbf{Code source :} \href{https://github.com/IsmailaDEH/Ismaila}{\color{accent}github.com/IsmailaDEH/Ismaila}\\
 \textbf{LinkedIn :} \href{https://www.linkedin.com/in/ismaila-amadou-deh}{\color{accent}linkedin.com/in/ismaila-amadou-deh}\\
-\textbf{Outils :} Python · NumPy · SciPy · Matplotlib · pytest · GitHub Actions · \LaTeX{} · Mathematica · ROOT
+\textbf{Outils :} Python · NumPy · SciPy · Matplotlib · pytest · GitHub Actions · LaTeX · Mathematica · ROOT
 
 \newpage
 % ------------------------------------------------------------------ Sommaire / méthode
@@ -70,14 +70,17 @@ Orbites & Mécanique céleste & $T \propto a^{1{,}5000}$\\
 \textbf{Dynamique moléculaire} & Simulation atomistique & 3 phases ; $D \approx 3{,}5\times10^{-5}$~cm$^2$/s\\
 \textbf{Potentiel appris + UQ} & Potentiels interatomiques & $r_e = 0{,}7400 \pm 0{,}0021$~Å\\
 Bell--CHSH & Mécanique quantique & $S = 2{,}848 \pm 0{,}014$\\
+\textbf{Croissance épitaxiale (KMC)} & Croissance de films minces & $\chi = 0{,}313$ (théorie $1/3$)\\
+\textbf{Modèle de Hubbard} & Électrons corrélés & $J = 4t^2/U$ retrouvé à $0{,}2\,\%$\\
+\textbf{Décohérence d'un qubit} & Systèmes quantiques ouverts & $T_2 = 17{,}14 \pm 0{,}09~\mu$s\\
 \bottomrule
 \end{tabularx}
 
 \subsection*{Méthode commune}
 \begin{enumerate}
   \item \textbf{Partir de la physique} : équations écrites et expliquées avant le code.
-  \item \textbf{Coder les algorithmes soi-même} (RK4, Metropolis, Verlet, régression creuse) pour en maîtriser les erreurs.
-  \item \textbf{Valider contre une solution exacte} (Onsager, Kepler, solution analytique) avant d'interpréter.
+  \item \textbf{Coder les algorithmes soi-même} (BKL, Lanczos, Lindblad, RK4, Metropolis, Verlet, régression creuse) pour en maîtriser les erreurs.
+  \item \textbf{Valider contre une solution exacte} (Bethe ansatz, équations de Bloch, Onsager, Kepler) avant d'interpréter.
   \item \textbf{Quantifier l'incertitude} : erreurs statistiques, ordres de convergence, barres d'erreur propagées.
   \item \textbf{Reproductible} : une commande régénère figures et résultats ; tests automatiques sur GitHub Actions.
 \end{enumerate}
@@ -272,5 +275,64 @@ Seuil de violation pour l'état de Werner & $p = 1/\sqrt2$ & 0,71\\
 \end{center}
 \noindent\includegraphics[width=0.49\linewidth]{08-inegalites-bell-chsh/figures/01_correlations.png}\hfill
 \includegraphics[width=0.49\linewidth]{08-inegalites-bell-chsh/figures/03_werner.png}
+
+% ------------------------------------------------------------------ Projet 9
+\newpage
+\section{Croissance épitaxiale par Monte-Carlo cinétique}
+\lien{09-epitaxie-monte-carlo-cinetique}
+
+\noindent Dépôt (flux $F$), diffusion ($D$) et agrégation d'adatomes sur un réseau carré $160\times160$, avec le modèle « bond counting » $h_n = (D/F)\,e^{-nE_b/kT}$. L'algorithme BKL range les atomes en cinq classes de taux, choisit un événement toujours accepté et avance l'horloge de $\Delta t = -\ln u / R$. La théorie de la nucléation prédit $N \propto (D/F)^{-\chi}$ avec $\chi = i^*/(i^*+2)$.
+
+\begin{center}\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Cas & $\chi$ mesuré & Théorie\\
+\midrule
+Agrégation irréversible ($i^*=1$), $D/F = 10^4$ à $10^7$ & $\mathbf{0{,}313}$ & $1/3$\\
+Liaison finie $E_b/kT = 4$, $D/F = 10^5$ à $10^6$ & $0{,}56$ & entre $1/2$ et $3/5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=0.62\linewidth]{09-epitaxie-monte-carlo-cinetique/figures/01_loi_echelle.png}}
+
+% ------------------------------------------------------------------ Projet 10
+\section{Modèle de Hubbard : transition de Mott par diagonalisation exacte}
+\lien{10-modele-hubbard-diagonalisation-exacte}
+
+\noindent $H = -t\sum (c^\dagger_{i\sigma}c_{j\sigma} + \text{h.c.}) + U\sum n_{i\uparrow}n_{i\downarrow}$ en 1D, base codée en entiers binaires, $H = T_\uparrow\otimes 1 + 1\otimes T_\downarrow + U\,\mathrm{diag}$, signes fermioniques vérifiés contre Jordan--Wigner, état fondamental par Lanczos (jusqu'à $63\,504$ états).
+
+\begin{center}\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+Validation & Résultat\\
+\midrule
+$U=0$ contre fermions libres & écart $7\times10^{-15}$\\
+$E_0/L$ ($L=10$, $U=4t$) contre Bethe ansatz (Lieb--Wu) & $-0{,}5834$ contre $-0{,}5737$\\
+Hellmann--Feynman $\partial E/\partial U = \langle n_\uparrow n_\downarrow\rangle$ & $0{,}104085 = 0{,}104085$\\
+Gap de spin Hubbard / Heisenberg ($J=4t^2/U$), $U = 48t$ & $0{,}998$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=0.95\linewidth]{10-modele-hubbard-diagonalisation-exacte/figures/01_energie_gap_mott.png}}
+
+% ------------------------------------------------------------------ Projet 11
+\newpage
+\section{Décohérence d'un qubit : équation de Lindblad}
+\lien{11-qubit-decoherence-lindblad}
+
+\noindent Qubit piloté $H = \tfrac{\Delta}{2}\sigma_z + \tfrac{\Omega}{2}\sigma_x$, relaxation $\sqrt{\gamma_1}\,\sigma_-$ et déphasage pur $\sqrt{\gamma_\varphi/2}\,\sigma_z$, intégrés par un RK4 écrit à la main. Les protocoles $T_1$, Ramsey et Rabi sont « mesurés » avec 400 tirs par point (bruit de projection), puis ajustés comme des données expérimentales.
+
+\begin{center}\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Grandeur & Valeur injectée & Valeur extraite\\
+\midrule
+$T_1$ & $20~\mu$s & $19{,}8 \pm 0{,}2~\mu$s\\
+$T_2$ (Ramsey) & $17{,}14~\mu$s & $17{,}14 \pm 0{,}09~\mu$s\\
+Population stationnaire & Bloch : $0{,}499852$ & Lindblad : $0{,}499852$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=\linewidth]{11-qubit-decoherence-lindblad/figures/01_T1_ramsey_rabi.png}}
 
 \end{document}

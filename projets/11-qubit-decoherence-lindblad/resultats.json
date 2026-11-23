@@ -1,0 +1,50 @@
+{
+  "T1_vrai_us": 20.0,
+  "T2_vrai_us": 17.142857142857142,
+  "T1_ajuste_us": [
+    19.843,
+    0.188
+  ],
+  "T2_ajuste_us": [
+    17.143,
+    0.092
+  ],
+  "desaccord_ajuste_MHz": 0.25006,
+  "rabi_population_stationnaire": {
+    "Lindblad": 0.499852,
+    "Bloch_analytique": 0.499852
+  },
+  "T2_vs_gamma_phi": [
+    {
+      "gamma_phi": 0.0,
+      "T2_mesure": 40.0,
+      "T2_theorie": 40.0
+    },
+    {
+      "gamma_phi": 0.01,
+      "T2_mesure": 28.571,
+      "T2_theorie": 28.571
+    },
+    {
+      "gamma_phi": 0.02,
+      "T2_mesure": 22.222,
+      "T2_theorie": 22.222
+    },
+    {
+      "gamma_phi": 0.05,
+      "T2_mesure": 13.333,
+      "T2_theorie": 13.333
+    },
+    {
+      "gamma_phi": 0.1,
+      "T2_mesure": 8.0,
+      "T2_theorie": 8.0
+    },
+    {
+      "gamma_phi": 0.2,
+      "T2_mesure": 4.444,
+      "T2_theorie": 4.444
+    }
+  ],
+  "duree_s": 6.5
+}
