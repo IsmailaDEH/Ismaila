@@ -1,0 +1,18 @@
+\input{style-lettre.tex}
+\begin{document}
+\entete
+\destinataire{Framatome\\Service Recrutement\\Courbevoie}{Candidature au stage « Évaluation d'un métamodèle thermo-hydraulique pour l'accélération des études »}
+
+Madame, Monsieur,
+
+Étudiant en Master~2 Physique Fondamentale à l'Université de Tours, je souhaite effectuer mon stage de fin d'études au sein de vos équipes. Votre sujet correspond exactement à un travail que j'ai déjà mené : remplacer un calcul physique coûteux par un métamodèle fiable, en contrôlant son incertitude.
+
+J'ai en effet développé un \textbf{métamodèle par processus gaussien} d'un potentiel interatomique. Au-delà de la prédiction, il fournit une barre d'erreur en chaque point ; je l'ai utilisé pour faire de l'\textbf{apprentissage actif} (placer les nouveaux calculs là où le modèle est le moins sûr) et pour propager l'incertitude jusqu'aux grandeurs physiques ($r_e = 0{,}7400 \pm 0{,}0021$~Å). J'ai aussi étudié l'erreur de modèle, c'est-à-dire ce qui se passe quand le métamodèle sort de son domaine de validité, point essentiel pour l'évaluer sérieusement.
+
+J'ai par ailleurs travaillé sur la découverte d'équations à partir de données (méthode SINDy, système de Lorenz retrouvé à $0{,}13\,\%$ près avec $1\,\%$ de bruit) et sur la résolution numérique de l'équation de la chaleur par différences finies, avec étude de convergence et de stabilité. La thermique et le transport me sont donc familiers, et je sais comparer un modèle réduit à un calcul de référence.
+
+Mes outils sont Python (NumPy, SciPy, Matplotlib), pytest et Git ; tous mes projets sont reproductibles et publiés sur GitHub. Je serais heureux d'apporter cette rigueur à vos études de sûreté et d'apprendre à vos côtés les codes thermo-hydrauliques industriels.
+
+Dans l'attente d'un entretien, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+\signature
+\end{document}

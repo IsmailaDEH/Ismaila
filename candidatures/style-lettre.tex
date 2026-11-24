@@ -1,0 +1,25 @@
+% Style commun des lettres de motivation — Ismaila AMADOU DEH
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,french]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm,top=1.8cm]{geometry}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{gris}{HTML}{6B675F}
+\pagestyle{empty}
+% Coordonnées privées (e-mail, téléphone) : fichier local non versionné
+\newcommand{\contact}{}
+\IfFileExists{coordonnees.tex}{\input{coordonnees.tex}}{}
+\newcommand{\entete}{%
+  {\LARGE\bfseries\color{accent} Ismaila AMADOU DEH}\\[2pt]
+  {\small\color{gris} Étudiant M2 Physique Fondamentale -- parcours Théories Quantiques, Université de Tours\\
+  \contact\href{https://www.linkedin.com/in/ismaila-amadou-deh}{linkedin.com/in/ismaila-amadou-deh} \;·\;
+  \href{https://github.com/IsmailaDEH/Ismaila}{github.com/IsmailaDEH/Ismaila}}\\[-4pt]
+  {\color{accent}\rule{\linewidth}{0.6pt}}}
+\newcommand{\destinataire}[2]{\null\hfill\begin{minipage}[t]{0.45\linewidth}#1\\[6pt]Tours, le \today\end{minipage}\par\medskip
+  \textbf{Objet :} #2\par}
+\newcommand{\signature}{\par\bigskip\hfill Ismaila AMADOU DEH}

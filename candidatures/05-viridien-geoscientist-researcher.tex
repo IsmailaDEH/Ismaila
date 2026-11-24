@@ -1,0 +1,22 @@
+\input{style-lettre.tex}
+\renewcommand{\destinataire}[2]{\null\hfill\begin{minipage}[t]{0.45\linewidth}#1\\[6pt]Tours, \today\end{minipage}\par\medskip\textbf{Subject:} #2\par}
+\renewcommand{\signature}{\par\bigskip\hfill Ismaila AMADOU DEH}
+\begin{document}\selectlanguage{english}
+\entete
+\destinataire{Viridien\\Talent Acquisition\\Massy}{Application for the \emph{Geoscientist Researcher -- Internship (6 months)}}
+
+Dear Hiring Team,
+
+I am a second-year Master's student in Fundamental Physics (Quantum Theories track) at the University of Tours, and I am applying for your Geoscientist Researcher internship. I am looking for a research internship where physics-based modelling meets data, and Viridien's work in subsurface imaging is a strong match for this.
+
+My main strength is \textbf{numerical simulation validated against theory}. I have written, from scratch, solvers for partial differential equations (heat equation with finite differences, measured convergence order $2.01$), ODE integrators (RK4, symplectic Verlet), Monte Carlo methods and exact diagonalisation of large quantum systems (63\,504 states with Lanczos). In each case I check the code against an exact solution before using the results.
+
+I also have experience at the boundary between physics and machine learning: \textbf{sparse regression (SINDy)} to recover governing equations from noisy data (Lorenz system recovered to $0.13\,\%$ with $1\,\%$ noise), and \textbf{Gaussian-process surrogate models} with uncertainty quantification and active learning. These are the same ideas used in inverse problems and in speeding up expensive wave-propagation simulations.
+
+I work in Python (NumPy, SciPy, Matplotlib), with automated testing and Git, and all twelve of my projects are public on GitHub. My scientific English is good (B2) and I am used to reading research papers.
+
+I would be glad to discuss how I can contribute to your team. Thank you for your consideration.
+
+Yours sincerely,
+\signature
+\end{document}

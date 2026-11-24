@@ -1,0 +1,18 @@
+\input{style-lettre.tex}
+\begin{document}
+\entete
+\destinataire{CEA Paris-Saclay\\Service Recrutement\\Saclay}{Candidature au stage Ingénieur/Master « Optimisation des buses pour la découpe laser »}
+
+Madame, Monsieur,
+
+Étudiant en Master~2 Physique Fondamentale à l'Université de Tours, je vous propose ma candidature pour ce stage de fin d'études. Ce sujet m'intéresse car il associe physique du laser, simulation numérique et optimisation, avec une application industrielle concrète.
+
+Je dispose d'une solide base en \textbf{simulation numérique d'équations aux dérivées partielles}. J'ai par exemple résolu l'équation de la chaleur par différences finies (schémas explicite FTCS et Crank--Nicolson), en vérifiant l'ordre de convergence ($2{,}01$ mesuré pour un ordre 2 théorique) et le seuil de stabilité. J'ai aussi écrit des intégrateurs d'équations différentielles (RK4, Verlet) et un code de dynamique moléculaire, toujours validés contre une solution connue avant toute exploitation des résultats.
+
+Pour l'optimisation, j'ai construit un \textbf{modèle de substitution par processus gaussien avec apprentissage actif} : on choisit les nouveaux calculs là où l'incertitude est la plus grande, ce qui réduit fortement le nombre de simulations coûteuses. Cette démarche s'applique directement à l'exploration d'une géométrie de buse ou de paramètres d'écoulement. Côté expérience, j'ai pratiqué la spectroscopie laser (He-Ne, sodium) en travaux pratiques de Master~1.
+
+Je travaille en Python (NumPy, SciPy, Matplotlib), avec tests automatiques et gestion de versions sous Git. Je suis rigoureux, autonome et prêt à me former rapidement aux outils de mécanique des fluides que vous utilisez.
+
+Je reste à votre disposition pour un entretien. Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+\signature
+\end{document}

@@ -1,0 +1,5 @@
+coordonnees.tex
+pdf/
+*.aux
+*.log
+*.out
